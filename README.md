@@ -8,7 +8,7 @@ As limitações de configuração pertinentes ao hardware no escopo da solução
 
 ## Observações
 
-O evento já ocorreu, é apenas levado em consideração o aprendizado e experiência.
+O evento já ocorreu, é apenas levado em consideração o aprendizado e a experiência.
 
 ## Instruções gerais
 
