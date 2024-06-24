@@ -5,11 +5,19 @@ import { Person } from '@/models/person';
 export class PeopleService {
 	constructor(private peopleRepository: PeopleRepository) {}
 
-	async createPerson(person: Person) {}
+	async createPerson(person: Person) {	
+		return `Usuario criado!`;
+	}
 
-	async getPeopleById(id: number) {}
+	async getPersonById(id: number) {
+		return `O usuário id procurado ${id}`;
+	}
 
-	async getPeopleByTerm(term: string) {}
+	async getPeopleByTerm(term: string) {
+		return `A query enviada ${term}!`;
+	}
 
-	async getPeopleCount() {}
+	async getPeopleCount() {
+		return `Contando pessoas...`;
+	}
 }
