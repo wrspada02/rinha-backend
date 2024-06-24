@@ -1,5 +1,4 @@
 import { PeopleRepository } from '@/repositories/people';
-
 import { Person } from '@/models/person';
 
 export class PeopleService {
