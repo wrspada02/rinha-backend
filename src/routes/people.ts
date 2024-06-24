@@ -1,27 +1,22 @@
 import { Router, Request, Response } from 'express';
+import { peopleController } from './instances/main';
 
 const router = Router();
 
 router.post('/pessoas', (req: Request, res: Response) => {
-	const person = req.body;
-
-	return res.send(`O corpo da requisicao ${person}`);
+	return peopleController.handleCreatePerson(req, res);
 });
 
 router.get('/pessoas/:id', (req: Request, res: Response) => {
-	const id = req.params.id;
-
-	return res.send(`A busca do usuario ${id}`);
+	return peopleController.handleGetPersonById(req, res);
 });
 
 router.get('/pessoas', (req: Request, res: Response) => {
-	const { t } = req.query;
-
-	return res.send(`A query enviada ${t}!`);
+	return peopleController.handleGetPeopleByTerm(req, res);
 });
 
 router.get('/contagem-pessoas', (req: Request, res: Response) => {
-	return res.send(`Contando pessoas...`);
+	return peopleController.handleGetPeopleCount(req, res);
 });
 
 export default router;
