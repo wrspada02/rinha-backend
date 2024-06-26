@@ -11,7 +11,8 @@
   },
   "scripts": {
     "dev": "bun run src/main.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prettier": "npx prettier . --write"
   },
   "keywords": [],
   "author": "",
@@ -19,11 +20,13 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.12",
-    "ts-jest": "^29.1.5",
-    "tsconfig-paths": "^4.2.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.25.3"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.25.3",
+    "prettier": "^3.3.2",
+    "ts-jest": "^29.1.5",
+    "tsconfig-paths": "^4.2.0"
   },
   "type": "module"
 }
