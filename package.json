@@ -10,7 +10,7 @@
     "typescript": "^5.5.2"
   },
   "scripts": {
-    "test": "jest",
+    "test": "bun test",
     "dev": "bun run src/main.ts",
     "lint": "eslint ."
   },
