@@ -5,34 +5,9 @@ import { Validation } from '@/helpers/validation';
 export class PeopleService {
 	constructor(private peopleRepository: PeopleRepository) {}
 
-	private ensureFieldsNotNull(person: Person, fields: (keyof Person)[]): void {
-    fields.forEach(field => {
-      if (person[field] === null) {
-        throw new Error(`${field} is null`);
-      }
-    });
-  }
-
-	private validateTypeReceivedPerson(person: Person, fields: (keyof Person)[]) {
-		fields.forEach(field => {
-			switch (field) {
-				case 'nascimento':
-					if (!Validation.isDate(person[field])) {
-						throw new Error(`${field} is not a date`);
-					}
-					break;
-
-				default:
-					if (!Validation.isString(person[field])) {
-							throw new Error(`${field} is not a string`);
-						}
-				}
-		});
-	}
-
 	createPerson(person: Person) {
-		this.ensureFieldsNotNull(person, ['apelido', 'nome']);
-		this.validateTypeReceivedPerson(
+		Validation.ensureFieldsNotNull(person, ['apelido', 'nome']);
+		Validation.validateTypeReceivedPerson(
 			person, 
 			['apelido', 'nome', 'nascimento', 'stack']
 		);
@@ -40,7 +15,9 @@ export class PeopleService {
 		return `Usuario criado!`;
 	}
 
-	getPersonById(id: number) {
+	getPersonById(id: string) {
+		if (!id) throw new Error('No id found');
+
 		return `O usuário id procurado ${id}`;
 	}
 

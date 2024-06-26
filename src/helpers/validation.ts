@@ -1,3 +1,5 @@
+import { Person } from "@/models/person";
+
 export class Validation {
   static isString(value: unknown) {
     if (Array.isArray(value)) {
@@ -12,5 +14,30 @@ export class Validation {
   
     return regex.test(String(value));
   }
+
+  static ensureFieldsNotNull(person: Person, fields: (keyof Person)[]): void {
+    fields.forEach(field => {
+      if (person[field] === null) {
+        throw new Error(`${field} is null`);
+      }
+    });
+  }
+
+	static validateTypeReceivedPerson(person: Person, fields: (keyof Person)[]) {
+		fields.forEach(field => {
+			switch (field) {
+				case 'nascimento':
+					if (!Validation.isDate(person[field])) {
+						throw new Error(`${field} is not a date`);
+					}
+					break;
+
+				default:
+					if (!Validation.isString(person[field])) {
+							throw new Error(`${field} is not a string`);
+						}
+				}
+		});
+	}
 }
 
