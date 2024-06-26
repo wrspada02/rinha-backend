@@ -1,32 +1,38 @@
 {
-    "name": "rinha-backend",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "dependencies": {
-        "@types/express": "^4.17.21",
-        "body-parser": "^1.20.2",
-        "express": "^4.19.2",
-        "typescript": "^5.5.2"
-    },
-    "scripts": {
-        "dev": "bun run src/main.ts",
-        "lint": "eslint .",
-        "prettier": "npx prettier . --write"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "@jest/globals": "^29.7.0",
-        "@types/jest": "^29.5.12",
-        "eslint": "^8.2.0",
-        "eslint-config-airbnb": "^19.0.4",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-import": "^2.25.3",
-        "prettier": "^3.3.2",
-        "ts-jest": "^29.1.5",
-        "tsconfig-paths": "^4.2.0"
-    },
-    "type": "module"
+  "name": "rinha-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "typescript": "^5.5.2"
+  },
+  "scripts": {
+    "dev": "bun run src/main.ts",
+    "lint": "eslint .",
+    "prettier": "npx prettier . --write",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.25.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "ts-jest": "^29.1.5",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "type": "module",
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown && bun test"
+  }
 }
