@@ -27,7 +27,6 @@ describe('Person service business rules', () => {
 
 	describe('POST - Create person', () => {
 		it('should throw error if nickname is null', () => {
-
 			const object = getPersonObject('apelido', null as unknown as string);
 
 			expect(() => peopleService.createPerson(object))
@@ -36,8 +35,6 @@ describe('Person service business rules', () => {
 
 		it('should throw error if name is null', () => {
 			const object = getPersonObject('nome', null as unknown as string);
-
-			console.log(object);
 
 			expect(() => peopleService.createPerson(object))
 				.toThrow('nome is null');
@@ -65,7 +62,7 @@ describe('Person service business rules', () => {
 		});
 
 		it('should throw error if stack is not an array of string', () => {
-			const object = getPersonObject('stack', [123 as unknown as string,123 as unknown as string, 123 as unknown as string]);
+			const object = getPersonObject('stack', [123 as unknown as string, 123 as unknown as string, 123 as unknown as string]);
 
 			expect(() => peopleService.createPerson(object))
 				.toThrow('stack is not a string');
@@ -77,5 +74,11 @@ describe('Person service business rules', () => {
 			expect(() => peopleService.createPerson(object)).not
 				.toThrow('stack is not a string');
 		});
+	});
+
+	describe('GET - By id', () => {
+		it('should throw an error if no parameter passed', () => {});
+
+		it('should find user', () => {});
 	});
 });
