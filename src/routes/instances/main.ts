@@ -7,4 +7,3 @@ const peopleService = new PeopleService(peopleRepository);
 const peopleController = new PeopleController(peopleService);
 
 export { peopleController };
-

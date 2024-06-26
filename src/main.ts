@@ -9,6 +9,5 @@ app.use(bodyParser.json());
 app.use(pessoas);
 
 app.listen(PORT, () => {
-	console.log(`App is running on port ${PORT}`);
+    console.log(`App is running on port ${PORT}`);
 });
-
