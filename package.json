@@ -33,6 +33,6 @@
   },
   "type": "module",
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown && bun test"
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
