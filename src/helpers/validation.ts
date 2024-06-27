@@ -1,3 +1,5 @@
+import { BadRequest } from '@/exceptions/BadRequest';
+import { UnprocessableEntity } from '@/exceptions/UnprocessableEntity';
 import { Person } from '@/models/person';
 
 export class Validation {
@@ -18,7 +20,7 @@ export class Validation {
     static ensureFieldsNotNull(person: Omit<Person, 'id'>, fields: (keyof Omit<Person, 'id'>)[]): void {
         fields.forEach((field) => {
             if (person[field] === null) {
-                throw new Error(`${field} is null`);
+                throw new UnprocessableEntity(`${field} is null`);
             }
         });
     }
@@ -31,13 +33,13 @@ export class Validation {
             switch (field) {
                 case 'nascimento':
                     if (!Validation.isDate(person[field])) {
-                        throw new Error(`${field} is not a date`);
+                        throw new BadRequest(`${field} is not a date`);
                     }
                     break;
 
                 default:
                     if (!Validation.isString(person[field])) {
-                        throw new Error(`${field} is not a string`);
+                        throw new BadRequest(`${field} is not a string`);
                     }
             }
         });

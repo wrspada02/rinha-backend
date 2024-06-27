@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { PeopleService } from '@/services/people';
 import { Person } from '@/models/person';
+import { BadRequest } from '@/exceptions/BadRequest';
+import { UnprocessableEntity } from '@/exceptions/UnprocessableEntity';
 
 export class PeopleController {
     constructor(private peopleService: PeopleService) {}
@@ -10,9 +12,11 @@ export class PeopleController {
             const person = req.body as Omit<Person, 'id'>;
             const response = await this.peopleService.createPerson(person);
 
-            return res.send(response);
+            return res.status(201).send(response);
         } catch (e: unknown) {
-            return res.status(404).send({ message: e });
+            if (e instanceof BadRequest) return res.status(404).send({ message: e });
+            else if (e instanceof UnprocessableEntity) return res.status(422).send({ message: e });
+            else return res.status(500).send('Internal server error');
         }
     }
 
