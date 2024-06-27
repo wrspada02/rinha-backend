@@ -40,6 +40,8 @@ export class PeopleService {
     }
 
     getPeopleCount() {
-        return `Contando pessoas...`;
+        const peopleCount = this.peopleRepository.getPeopleCount();
+        
+        return peopleCount;
     }
 }

@@ -4,22 +4,26 @@ import { Person } from '@/models/person';
 
 describe('Person service business rules', () => {
     let peopleService: PeopleService;
-    let peoples: Person[]  = [
-        { 
-            apelido: 'Test1', 
-            id: '1234', 
-            nascimento: '1200/12/12', 
-            nome: 'Test1', 
-            stack: []
-        },
-        { 
-            apelido: 'Test2', 
-            id: '2345', 
-            nascimento: '1200/12/12', 
-            nome: 'Test2', 
-            stack: []
-        },
-    ];
+    let peoples: Person[] = [];
+
+    afterEach(() => {
+        peoples = [
+            { 
+                apelido: 'Test1', 
+                id: '1234', 
+                nascimento: '1200/12/12', 
+                nome: 'Test1', 
+                stack: []
+            },
+            { 
+                apelido: 'Test2', 
+                id: '2345', 
+                nascimento: '1200/12/12', 
+                nome: 'Test2', 
+                stack: []
+            },
+        ];
+    });
 		
     beforeAll(() => {
 			const mockPeopleRepository: jest.Mocked<PeopleRepository> = {
@@ -40,7 +44,9 @@ describe('Person service business rules', () => {
                         || p.nome === term
                     });
                 }),
-				getPeopleCount: jest.fn()
+				getPeopleCount: jest.fn().mockImplementation(() => {
+                    return peoples.length;
+                }),
 			};
 
         peopleService = new PeopleService(mockPeopleRepository);
@@ -161,6 +167,14 @@ describe('Person service business rules', () => {
 
         it('should not find an user', () => {
             expect(() => peopleService.getPeopleByTerm('ウイリアン')).toThrow('No user found');
+        });
+    });
+
+    describe('GET - People count', () => {
+        it('should return people count', () => {
+            const peopleCount = peopleService.getPeopleCount();
+
+            expect(peopleCount).toBe(2);
         });
     });
 });
