@@ -31,7 +31,15 @@ describe('Person service business rules', () => {
 				getPeopleById: jest.fn().mockImplementation((id: string) => {
                     return peoples.find(p => p.id === id);
                 }),
-				getPeopleByTerm: jest.fn(),
+				getPeopleByTerm: jest.fn().mockImplementation((term: string) => {
+                    return peoples.find(p => {
+                        return p.apelido === term 
+                        || p.id === term
+                        || p.nascimento === term
+                        || p.nome === term
+                        || p.nome === term
+                    });
+                }),
 				getPeopleCount: jest.fn()
 			};
 
@@ -139,6 +147,20 @@ describe('Person service business rules', () => {
 
         it('should not find an user', () => {
             expect(() => peopleService.getPersonById('ウイリアン')).toThrow('No user found');
+        });
+    });
+
+    describe('GET - By term', () => {
+        it('should throw an error if no parameter passed', () => {
+			expect(() => peopleService.getPeopleByTerm('')).toThrow('No term received');
+		});
+
+        it('should find an user', () => {
+            expect(() => peopleService.getPeopleByTerm('1234')).not.toThrow('No user found');
+        });
+
+        it('should not find an user', () => {
+            expect(() => peopleService.getPeopleByTerm('ウイリアン')).toThrow('No user found');
         });
     });
 });

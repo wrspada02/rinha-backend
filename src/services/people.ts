@@ -30,7 +30,13 @@ export class PeopleService {
     }
 
     getPeopleByTerm(term: string) {
-        return `A query enviada ${term}!`;
+        if (!term) throw new Error('No term received');
+
+        const person = this.peopleRepository.getPeopleByTerm(term);
+
+        if (!person) throw new Error('No user found');
+        
+        return person;
     }
 
     getPeopleCount() {
