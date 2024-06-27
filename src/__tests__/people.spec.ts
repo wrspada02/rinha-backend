@@ -121,8 +121,6 @@ describe('Person service business rules', () => {
                 123 as unknown as string,
             ]);
 
-            console.log(object);
-
             expect(() => peopleService.createPerson(object)).toThrow(
                 'stack is not a string'
             );

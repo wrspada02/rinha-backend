@@ -12,7 +12,6 @@ export class PeopleController {
 
             return res.send(response);
         } catch (e: unknown) {
-            console.log(e);
             return res.status(404).send({ message: e });
         }
     }
