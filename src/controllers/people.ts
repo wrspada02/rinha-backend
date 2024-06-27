@@ -1,22 +1,24 @@
 import { Request, Response } from 'express';
 import { PeopleService } from '@/services/people';
+import { Person } from '@/models/person';
 
 export class PeopleController {
     constructor(private peopleService: PeopleService) {}
 
     async handleCreatePerson(req: Request, res: Response) {
-        const response = await this.peopleService.createPerson({
-            apelido: 'Willzin',
-            nome: 'William',
-            nascimento: '10/11/2002',
-            stack: ['Typescript', 'PHP', 'Node.js', 'React.js', 'Nest.js'],
-        });
+        try {
+            const person = req.body as Omit<Person, 'id'>;
+            const response = await this.peopleService.createPerson(person);
 
-        return res.send(response);
+            return res.send(response);
+        } catch (e: unknown) {
+            console.log(e);
+            return res.status(404).send({ message: e });
+        }
     }
 
     async handleGetPersonById(req: Request, res: Response) {
-        const id = parseInt(req.params.id);
+        const id = req.params.id;
         const response = await this.peopleService.getPersonById(id);
 
         return res.send(response);

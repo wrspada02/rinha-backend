@@ -60,8 +60,8 @@ describe('Person service business rules', () => {
             id: '123',
             apelido: 'Willzinn',
             nome: 'Willson',
-            nascimento: '1920/07/23',
             stack: ['Node.js', 'Php', 'Typescript', 'Laravel', 'Python'],
+            nascimento: '1920/07/23',
         };
 
         if (!key) return object;
@@ -121,6 +121,8 @@ describe('Person service business rules', () => {
                 123 as unknown as string,
             ]);
 
+            console.log(object);
+
             expect(() => peopleService.createPerson(object)).toThrow(
                 'stack is not a string'
             );
@@ -131,6 +133,22 @@ describe('Person service business rules', () => {
 
             expect(() => peopleService.createPerson(object)).not.toThrow(
                 'stack is not a string'
+            );
+        });
+
+        it('should throw an error if data does not look good', () => {
+            const object1 = getPersonObject('nascimento', '121212/12/12');
+            const object2 = getPersonObject('nascimento', '1212/1212/12');
+            const object3 = getPersonObject('nascimento', '1212/12/1212');
+
+            expect(() => peopleService.createPerson(object1)).toThrow(
+                'nascimento is not a date'
+            );
+            expect(() => peopleService.createPerson(object2)).toThrow(
+                'nascimento is not a date'
+            );
+            expect(() => peopleService.createPerson(object3)).toThrow(
+                'nascimento is not a date'
             );
         });
 

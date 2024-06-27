@@ -5,7 +5,7 @@ import { Validation } from '@/helpers/validation';
 export class PeopleService {
     constructor(private peopleRepository: PeopleRepository) {}
 
-    createPerson(person: Person) {
+    createPerson(person: Omit<Person, 'id'>) {
         Validation.ensureFieldsNotNull(person, ['apelido', 'nome']);
         Validation.validateTypeReceivedPerson(person, [
             'apelido',

@@ -10,12 +10,12 @@ export class Validation {
     }
 
     static isDate(value: unknown) {
-        const regex = new RegExp(/\d{4}\/\d{2}\/\d{2}/);
+        const regex = new RegExp(/^\d{4}\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/);
 
         return regex.test(String(value));
     }
 
-    static ensureFieldsNotNull(person: Person, fields: (keyof Person)[]): void {
+    static ensureFieldsNotNull(person: Omit<Person, 'id'>, fields: (keyof Omit<Person, 'id'>)[]): void {
         fields.forEach((field) => {
             if (person[field] === null) {
                 throw new Error(`${field} is null`);
@@ -24,8 +24,8 @@ export class Validation {
     }
 
     static validateTypeReceivedPerson(
-        person: Person,
-        fields: (keyof Person)[]
+        person: Omit<Person, 'id'>,
+        fields: (keyof Omit<Person, 'id'>)[]
     ) {
         fields.forEach((field) => {
             switch (field) {
