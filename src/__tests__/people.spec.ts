@@ -4,9 +4,38 @@ import { Person } from '@/models/person';
 
 describe('Person service business rules', () => {
     let peopleService: PeopleService;
-
+    let peoples: Person[]  = [
+        { 
+            apelido: 'Test1', 
+            id: '1234', 
+            nascimento: '1200/12/12', 
+            nome: 'Test1', 
+            stack: []
+        },
+        { 
+            apelido: 'Test2', 
+            id: '2345', 
+            nascimento: '1200/12/12', 
+            nome: 'Test2', 
+            stack: []
+        },
+    ];
+		
     beforeAll(() => {
-        peopleService = new PeopleService(new PeopleRepository());
+			const mockPeopleRepository: jest.Mocked<PeopleRepository> = {
+				createPerson: jest.fn().mockImplementation((person: Person) => {
+                    peoples.push(person);
+
+                    return person;
+                }),
+				getPeopleById: jest.fn().mockImplementation((id: string) => {
+                    return peoples.find(p => p.id === id);
+                }),
+				getPeopleByTerm: jest.fn(),
+				getPeopleCount: jest.fn()
+			};
+
+        peopleService = new PeopleService(mockPeopleRepository);
     });
 
     const getPersonObject = <Type extends keyof Person>(
@@ -14,6 +43,7 @@ describe('Person service business rules', () => {
         value?: Person[Type]
     ): Person => {
         let object: Person = {
+            id: '123',
             apelido: 'Willzinn',
             nome: 'Willson',
             nascimento: '1920/07/23',
@@ -89,11 +119,26 @@ describe('Person service business rules', () => {
                 'stack is not a string'
             );
         });
+
+        it('should return person object after success', () => {
+            const object = getPersonObject();
+            const person = peopleService.createPerson(object);
+
+            expect(person).toBeDefined();
+        });
     });
 
     describe('GET - By id', () => {
-        it('should throw an error if no parameter passed', () => {});
+        it('should throw an error if no parameter passed', () => {
+			expect(() => peopleService.getPersonById('')).toThrow('No id received');
+		});
 
-        it('should find user', () => {});
+        it('should find an user', () => {
+            expect(() => peopleService.getPersonById('1234')).not.toThrow('No user found');
+        });
+
+        it('should not find an user', () => {
+            expect(() => peopleService.getPersonById('ウイリアン')).toThrow('No user found');
+        });
     });
 });

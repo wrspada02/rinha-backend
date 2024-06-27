@@ -29,10 +29,14 @@
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
     "ts-jest": "^29.1.5",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "@types/bun": "latest"
   },
   "type": "module",
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }

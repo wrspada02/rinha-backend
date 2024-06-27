@@ -14,13 +14,19 @@ export class PeopleService {
             'stack',
         ]);
 
-        return `Usuario criado!`;
+        const createdPerson = this.peopleRepository.createPerson(person);
+
+        return createdPerson;
     }
 
     getPersonById(id: string) {
-        if (!id) throw new Error('No id found');
+        if (!id) throw new Error('No id received');
 
-        return `O usuário id procurado ${id}`;
+        const person = this.peopleRepository.getPeopleById(id);
+
+        if (!person) throw new Error('No user found');
+
+        return person;
     }
 
     getPeopleByTerm(term: string) {
