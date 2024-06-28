@@ -25,7 +25,7 @@ export class Validation {
         });
     }
 
-    static validateTypeReceivedPerson(
+    static checkTypeReceived(
         person: Omit<Person, 'id'>,
         fields: (keyof Omit<Person, 'id'>)[]
     ) {

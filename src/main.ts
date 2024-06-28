@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import pessoas from './routes/people';
 import bodyParser from 'body-parser';
 

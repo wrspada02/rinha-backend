@@ -1,13 +1,15 @@
 import { PeopleRepository } from '@/repositories/people';
 import { Person } from '@/models/person';
 import { Validation } from '@/helpers/validation';
+import { NotFound } from '@/exceptions/NotFound';
+import { BadRequest } from '@/exceptions/BadRequest';
 
 export class PeopleService {
     constructor(private peopleRepository: PeopleRepository) {}
 
     createPerson(person: Omit<Person, 'id'>) {
         Validation.ensureFieldsNotNull(person, ['apelido', 'nome']);
-        Validation.validateTypeReceivedPerson(person, [
+        Validation.checkTypeReceived(person, [
             'apelido',
             'nome',
             'nascimento',
@@ -20,21 +22,21 @@ export class PeopleService {
     }
 
     getPersonById(id: string) {
-        if (!id) throw new Error('No id received');
+        if (!id) throw new BadRequest('No id received');
 
         const person = this.peopleRepository.getPeopleById(id);
 
-        if (!person) throw new Error('No user found');
+        if (!person) throw new NotFound('No user found');
 
         return person;
     }
 
     getPeopleByTerm(term: string) {
-        if (!term) throw new Error('No term received');
+        if (!term) throw new BadRequest('No term received');
 
         const person = this.peopleRepository.getPeopleByTerm(term);
 
-        if (!person) throw new Error('No user found');
+        if (!person) throw new NotFound('No user found');
         
         return person;
     }
