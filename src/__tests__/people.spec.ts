@@ -5,7 +5,6 @@ import { Person } from '@/models/person';
 import { PeopleController } from '@/controllers/people';
 import { Response } from 'express';
 
-
 describe('Person tests', () => {
     let peoples: Person[] = [];
     const mockPeopleRepository: jest.Mocked<PeopleRepository> = {
@@ -276,6 +275,57 @@ describe('Person tests', () => {
                 await peopleController.handleCreatePerson(request, response);
                 expect(response.statusCode).toBe(201);
             });
+        });
+
+        describe('GET - By id', () => {
+            it('should return status 400', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/pessoas/',
+                    params: {}
+                });
+
+                await peopleController.handleGetPersonById(request, response);
+                expect(response.statusCode).toBe(400);
+            });
+
+            it('should return status 404', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/pessoas/',
+                    params: {
+                        id: 'asjdasd7uyhas',
+                    },
+                });
+
+                await peopleController.handleGetPersonById(request, response);
+                expect(response.statusCode).toBe(404);
+            });
+
+            it('should return status 200', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/pessoas/',
+                    params: {
+                        id: '1234',
+                    },
+                });
+
+                await peopleController.handleGetPersonById(request, response);
+                expect(response.statusCode).toBe(200);
+            });
+        });
+
+        describe('GET - By term', () => {
+            it('should return status 400', () => {});
+
+            it('should return status 404', () => {});
+
+            it('should return status 200', () => {});
+        });
+
+        describe('GET - People count', () => {
+            it('should return status 200', () => {});
         });
     });
 });
