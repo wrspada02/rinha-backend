@@ -184,10 +184,6 @@ describe('Person tests', () => {
             it('should find an user', () => {
                 expect(() => peopleService.getPeopleByTerm('1234')).not.toThrow('No user found');
             });
-    
-            it('should not find an user', () => {
-                expect(() => peopleService.getPeopleByTerm('ウイリアン')).toThrow('No user found');
-            });
         });
     
         describe('GET - People count', () => {
@@ -326,19 +322,6 @@ describe('Person tests', () => {
 
                 await peopleController.handleGetPeopleByTerm(request, response);
                 expect(response.statusCode).toBe(400);
-            });
-
-            it('should return status 404', async () => {
-                request = httpMocks.createRequest({
-                    method: 'GET',
-                    url: '/pessoas/',
-                    query: {
-                        t: 'h23gbhg32'
-                    }
-                });
-
-                await peopleController.handleGetPeopleByTerm(request, response);
-                expect(response.statusCode).toBe(404);
             });
 
             it('should return status 200', async () => {

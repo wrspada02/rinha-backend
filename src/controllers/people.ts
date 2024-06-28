@@ -42,8 +42,7 @@ export class PeopleController {
             return res.send(response);
         } catch (e: unknown) {
             if (e instanceof BadRequest) return res.status(400).send({ message: e });
-            else if (e instanceof NotFound) return res.status(404).send({ message: e });
-            else return res.status(500).send('Internal server error');
+            else res.status(500).send('Internal server error');
         }
     }
 

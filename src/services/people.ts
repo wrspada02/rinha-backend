@@ -35,8 +35,6 @@ export class PeopleService {
         if (!term) throw new BadRequest('No term received');
 
         const person = this.peopleRepository.getPeopleByTerm(term);
-
-        if (!person) throw new NotFound('No user found');
         
         return person;
     }
