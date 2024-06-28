@@ -317,15 +317,54 @@ describe('Person tests', () => {
         });
 
         describe('GET - By term', () => {
-            it('should return status 400', () => {});
+            it('should return status 400', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/pessoas/',
+                    query: {}
+                });
 
-            it('should return status 404', () => {});
+                await peopleController.handleGetPeopleByTerm(request, response);
+                expect(response.statusCode).toBe(400);
+            });
 
-            it('should return status 200', () => {});
+            it('should return status 404', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/pessoas/',
+                    query: {
+                        t: 'h23gbhg32'
+                    }
+                });
+
+                await peopleController.handleGetPeopleByTerm(request, response);
+                expect(response.statusCode).toBe(404);
+            });
+
+            it('should return status 200', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/pessoas/',
+                    query: {
+                        t: '1234'
+                    }
+                });
+
+                await peopleController.handleGetPeopleByTerm(request, response);
+                expect(response.statusCode).toBe(200);
+            });
         });
 
         describe('GET - People count', () => {
-            it('should return status 200', () => {});
+            it('should return status 200', async () => {
+                request = httpMocks.createRequest({
+                    method: 'GET',
+                    url: '/contagem-pessoas',
+                });
+
+                await peopleController.handleGetPeopleCount(request, response);
+                expect(response.statusCode).toBe(200);
+            });
         });
     });
 });

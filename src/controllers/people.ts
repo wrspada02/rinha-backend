@@ -49,7 +49,7 @@ export class PeopleController {
 
     async handleGetPeopleCount(req: Request, res: Response) {
         const response = await this.peopleService.getPeopleCount();
-
-        return res.send(response);
+        
+        return res.send({ amount: response });
     }
 }
