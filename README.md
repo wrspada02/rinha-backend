@@ -17,12 +17,15 @@ Visto que existem restrições de hardware, é necessário a aplicação de um b
 
 ## Como testar a perfomance?
 
-Estarei usualmente testando a perfomance do banco de dados utilizando o <b>pgbench</b>, uma CLI do postgress que retorna o status do banco. Portanto, conseguirei visualizar as necessidades e o atual estado do banco de dados.
+Estarei usualmente testando a perfomance do banco de dados utilizando o <b>pgbench</b>, uma CLI do postgress que retorna o status do banco. Portanto, conseguirei visualizar as necessidades e o atual estado do banco de dados até atingir o resultado desejado.
 https://www.postgresql.org/docs/10/pgbench.html
 
 ## Artigo stackoverflow sobre perfomance de banco de dados
 Para entender quais métodos podem ser aplicados para que alcançe uma boa perfomance no banco de dados.
 <i>Artigo sobre perfomance de banco de dados:</i> https://stackoverflow.blog/2020/10/14/improve-database-performance-with-connection-pooling/
+
+## Docs sobre o Prisma ORM, utilizado neste repositório
+Estarei utilizando o prisma ORM para comunicação com o banco de dados, desta forma, todas as técnicas de perfomance e tudo mais relacionado ao banco de dados pode ser visualizado<br><b>neste link</b>: https://www.prisma.io/docs/orm/overview
 
 ## Instruções gerais
 
