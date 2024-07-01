@@ -6,7 +6,7 @@ Enfoque em uma solução back-end para o desafio proposto dentro das regras de n
 
 As limitações de configuração pertinentes ao hardware no escopo da solução, 1.5 GPU e 3GB de memória RAM.
 
-## Observações
+# Observações
 
 O evento já ocorreu, é apenas levado em consideração o aprendizado e a experiência.
 
