@@ -7,7 +7,7 @@ import { BadRequest } from '@/exceptions/BadRequest';
 export class PeopleService {
     constructor(private peopleRepository: PeopleRepository) {}
 
-    createPerson(person: Omit<Person, 'id'>) {
+    async createPerson(person: Omit<Person, 'id'>) {
         Validation.ensureFieldsNotNull(person, ['apelido', 'nome']);
         Validation.checkTypeReceived(person, [
             'apelido',
@@ -16,31 +16,31 @@ export class PeopleService {
             'stack',
         ]);
 
-        const createdPerson = this.peopleRepository.createPerson(person);
+        const createdPerson = await this.peopleRepository.createPerson(person);
 
         return createdPerson;
     }
 
-    getPersonById(id: string) {
+    async getPersonById(id: string) {
         if (!id) throw new BadRequest('No id received');
 
-        const person = this.peopleRepository.getPeopleById(id);
+        const person = await this.peopleRepository.getPeopleById(id);
 
         if (!person) throw new NotFound('No user found');
 
         return person;
     }
 
-    getPeopleByTerm(term: string) {
+    async getPeopleByTerm(term: string) {
         if (!term) throw new BadRequest('No term received');
 
-        const person = this.peopleRepository.getPeopleByTerm(term);
+        const person = await this.peopleRepository.getPeopleByTerm(term);
         
         return person;
     }
 
-    getPeopleCount() {
-        const peopleCount = this.peopleRepository.getPeopleCount();
+    async getPeopleCount() {
+        const peopleCount = await this.peopleRepository.getPeopleCount();
         
         return peopleCount;
     }

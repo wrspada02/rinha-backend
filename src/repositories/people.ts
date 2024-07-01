@@ -1,11 +1,22 @@
 import { Person } from '@/models/person';
+import { PrismaClient } from '@prisma/client';
 
 export class PeopleRepository {
-    async createPerson(person: Omit<Person, 'id'>) {}
+    constructor(private readonly prisma: PrismaClient) {}
 
-    async getPeopleById(id: string) {}
+    async createPerson(person: Omit<Person, 'id'>): Promise<Person> {
+        return await this.prisma.person.create({ data: { ...person } });
+    }
 
-    async getPeopleByTerm(term: string) {}
+    async getPeopleById(id: string): Promise<Person | null> {
+        return await this.prisma.person.findFirst({ where: { id }});
+    }
 
-    async getPeopleCount() {}
+    async getPeopleByTerm(term: string): Promise<Person[]> {
+        return await this.prisma.person.findMany({ where: { OR: [{ apelido: term, nome: term, stack: { has: term } }]}});
+    }
+
+    async getPeopleCount(): Promise<number> {
+        return await this.prisma.person.count();
+    }
 }

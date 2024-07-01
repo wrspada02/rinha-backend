@@ -187,8 +187,8 @@ describe('Person tests', () => {
         });
     
         describe('GET - People count', () => {
-            it('should return people count', () => {
-                const peopleCount = peopleService.getPeopleCount();
+            it('should return people count', async () => {
+                const peopleCount = await peopleService.getPeopleCount();
     
                 expect(peopleCount).toBe(2);
             });
