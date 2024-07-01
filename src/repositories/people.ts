@@ -13,7 +13,7 @@ export class PeopleRepository {
     }
 
     async getPeopleByTerm(term: string): Promise<Person[]> {
-        return await this.prisma.person.findMany({ where: { OR: [{ apelido: term, nome: term, stack: { has: term } }]}});
+        return await this.prisma.person.findMany({ where: { OR: [{ apelido: term }, { nome: term}, { stack: { has: term } }]}});
     }
 
     async getPeopleCount(): Promise<number> {
