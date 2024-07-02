@@ -30,3 +30,7 @@ Estarei utilizando o prisma ORM para comunicação com o banco de dados, desta f
 ## Instruções gerais
 
 <a href="https://github.com/zanfranceschi/rinha-de-backend-2023-q3/blob/main/INSTRUCOES.md"><b><u>INSTRUÇÕES DO PROJETO</u></b></a>
+
+## Perfomance banco de dados
+Estatística perfomance banco de dados rodando sem restrições de hardware (Ryzen 5 5600X - 6 núcleos e 12 threads e 32gb de ram)
+![image](https://github.com/wrspada02/rinha-backend/assets/90157791/488a746d-05cb-4667-8773-2f3dcbe5e15a)
