@@ -5,15 +5,16 @@
   "main": "index.js",
   "dependencies": {
     "@prisma/client": "5.16.1",
-    "@types/express": "^4.17.21",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "prisma": "5.16.1"
   },
   "scripts": {
     "dev": "bun run src/main.ts",
+    "postinstall": "prisma generate",
     "lint": "eslint .",
-    "prettier": "npx prettier . --write",
+    "prettier": "bunx prettier . --write",
     "prepare": "husky"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "@jest/globals": "^29.7.0",
     "@types/bun": "latest",
     "@types/jest": "^29.5.12",
+    "@types/express": "^4.17.21",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -31,7 +33,6 @@
     "lint-staged": "^15.2.7",
     "node-mocks-http": "^1.15.0",
     "prettier": "^3.3.2",
-    "prisma": "5.16.1",
     "ts-jest": "^29.1.5",
     "tsconfig-paths": "^4.2.0"
   },
