@@ -2,6 +2,9 @@ version: '3.5'
 services:
   api1: # API - Instância 01
     image: wrspada02/rinha-backend
+    env_file: .env
+    environment:
+        DATABASE_URL: ${DATABASE_URL}
     hostname: api1
     depends_on:
       - db
@@ -15,6 +18,9 @@ services:
 
   api2: # API - Instância 02
     image: wrspada02/rinha-backend
+    env_file: .env
+    environment:
+        DATABASE_URL: ${DATABASE_URL}
     hostname: api2
     depends_on:
       - db
@@ -43,6 +49,10 @@ services:
 
   db: # Banco de dados
    image: postgres
+   env_file: .env
+   environment:
+      POSTGRES_USERNAME: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
    deploy:
       resources:
         limits:
