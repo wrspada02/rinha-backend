@@ -51,4 +51,10 @@ export class PeopleController {
         
         return res.send({ amount: response });
     }
+
+    async getHealthCheck(req: Request, res: Response) {
+        const response = await this.peopleService.getHealthCheck();
+
+        return res.send({ healthCheck: response });
+    }
 }

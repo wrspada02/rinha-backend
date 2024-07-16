@@ -44,4 +44,8 @@ export class PeopleService {
         
         return peopleCount;
     }
+
+    async getHealthCheck() {
+        return await this.peopleRepository.getHealthCheck();
+    }
 }

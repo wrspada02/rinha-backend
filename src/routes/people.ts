@@ -19,4 +19,8 @@ router.get('/contagem-pessoas', (req: Request, res: Response) => {
     return peopleController.handleGetPeopleCount(req, res);
 });
 
+router.get('/health-check', (req: Request, res: Response) => {
+    return peopleController.getHealthCheck(req, res);
+});
+
 export default router;

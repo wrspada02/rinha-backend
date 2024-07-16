@@ -2,10 +2,13 @@ version: '3.5'
 services:
   api1: # API - Instância 01
     image: wrspada02/rinha-backend
+    container_name: api1
     env_file: .env
     environment:
-        DATABASE_URL: ${DATABASE_URL}
-    hostname: api1
+      - DATABASE_URL=${DATABASE_URL}
+    hostname: ${API_HOST}
+    networks:
+      - app-network
     depends_on:
       - db
     expose:
@@ -18,10 +21,13 @@ services:
 
   api2: # API - Instância 02
     image: wrspada02/rinha-backend
+    container_name: api2
     env_file: .env
     environment:
-        DATABASE_URL: ${DATABASE_URL}
-    hostname: api2
+      - DATABASE_URL=${DATABASE_URL}
+    hostname: ${API_HOST}
+    networks:
+      - app-network
     depends_on:
       - db
     expose:
@@ -41,6 +47,9 @@ services:
       - api2
     ports:
       - "9999:9999"
+    container_name: nginx
+    networks:
+      - app-network
     deploy:
       resources:
         limits:
@@ -48,13 +57,22 @@ services:
           memory: '0.5GB'
 
   db: # Banco de dados
-   image: postgres
-   env_file: .env
-   environment:
-      POSTGRES_USERNAME: ${POSTGRES_USERNAME}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-   deploy:
+    image: postgres
+    container_name: db
+    env_file: .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    hostname: ${POSTGRES_HOST}
+    networks:
+      - app-network
+    deploy:
       resources:
         limits:
           cpus: '0.75'
           memory: '1.5GB'
+
+networks:
+  app-network:
+    driver: bridge

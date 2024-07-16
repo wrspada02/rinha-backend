@@ -19,4 +19,8 @@ export class PeopleRepository {
     async getPeopleCount(): Promise<number> {
         return await this.prisma.person.count();
     }
+
+    async getHealthCheck() {
+        return await this.prisma.$queryRaw`SELECT 1`;
+    }
 }
