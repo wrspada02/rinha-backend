@@ -67,6 +67,8 @@ services:
     hostname: ${POSTGRES_HOST}
     networks:
       - app-network
+    volumes:
+      - ./src/database/person.sql:/docker-entrypoint-initdb.d/person.sql
     deploy:
       resources:
         limits:
