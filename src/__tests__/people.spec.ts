@@ -65,7 +65,7 @@ describe('Person tests', () => {
                 apelido: 'Willzinn',
                 nome: 'Willson',
                 stack: ['Node.js', 'Php', 'Typescript', 'Laravel', 'Python'],
-                nascimento: '1920/07/23',
+                nascimento: '1920-07-23',
             };
     
             if (!key) return object;
@@ -262,7 +262,7 @@ describe('Person tests', () => {
                     url: '/pessoas',
                     body: {
                         apelido: 'Test1', 
-                        nascimento: '1200/12/12', 
+                        nascimento: '1200-12-12', 
                         nome: 'Test1', 
                         stack: []
                     },
