@@ -34,3 +34,7 @@ Estarei utilizando o prisma ORM para comunicação com o banco de dados, desta f
 ## Perfomance banco de dados
 Estatística perfomance banco de dados rodando sem restrições de hardware (Ryzen 5 5600X - 6 núcleos e 12 threads e 32gb de ram)
 ![image](https://github.com/wrspada02/rinha-backend/assets/90157791/488a746d-05cb-4667-8773-2f3dcbe5e15a)
+
+Estatística perfomance banco de dados rodando com restrições de hardware container (CPU 0.75, 1.5gb de ram)
+![image](https://github.com/user-attachments/assets/a204f84f-1f66-4d21-b5cd-e29281dfea27)
+
