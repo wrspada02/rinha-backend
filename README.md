@@ -38,3 +38,9 @@ Estatística perfomance banco de dados rodando sem restrições de hardware (Ryz
 Estatística perfomance banco de dados rodando com restrições de hardware container (CPU 0.75, 1.5gb de ram)
 ![image](https://github.com/user-attachments/assets/a204f84f-1f66-4d21-b5cd-e29281dfea27)
 
+
+## Teste comum
+
+Feedback gatling
+![image](https://github.com/user-attachments/assets/17aa410f-3cc1-4728-9388-ed9dfc3c51d8)
+
