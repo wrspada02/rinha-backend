@@ -41,10 +41,14 @@ Estatística perfomance banco de dados rodando com restrições de hardware cont
 
 # Feedback gatling
 ## First gatling test
+Até este breve momento, não utilizei nenhuma técnica para escalar o banco de dados, não modifiquei o docker-compose para aumentar/diminuir hardware dos serviços, nem mexi em alguma propriedade do nginx.
 ## Comum test
 ![image](https://github.com/user-attachments/assets/cda03780-c9ee-4a65-b866-b3aa99011750)
 
 ## Stress test
 ![image](https://github.com/user-attachments/assets/8e5acff0-a3bc-4ca7-9ad9-911f2faf7eb7)
+
+## Contagem pessoas
+![image](https://github.com/user-attachments/assets/7284e404-aff4-4b46-be2b-9d743f5980a2)
 
 
