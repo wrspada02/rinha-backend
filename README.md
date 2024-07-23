@@ -45,4 +45,5 @@ Estatística perfomance banco de dados rodando com restrições de hardware cont
 ![image](https://github.com/user-attachments/assets/3292f8b4-0b0b-46a9-a83c-3ca70833a2d7)
 
 ## Stress test
-![image](https://github.com/user-attachments/assets/b8e5222a-3b80-4170-b908-21399f0f9add)
+![image](https://github.com/user-attachments/assets/dba4f6cc-fa53-4d13-8540-dc0e362dc04a)
+
