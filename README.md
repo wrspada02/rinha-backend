@@ -42,7 +42,7 @@ Estatística perfomance banco de dados rodando com restrições de hardware cont
 # Feedback gatling
 ## First gatling test
 ## Comum test
-![image](https://github.com/user-attachments/assets/3292f8b4-0b0b-46a9-a83c-3ca70833a2d7)
+![image](https://github.com/user-attachments/assets/4196cc8b-9183-40d0-b614-db893972bec0)
 
 ## Stress test
 ![image](https://github.com/user-attachments/assets/dba4f6cc-fa53-4d13-8540-dc0e362dc04a)
