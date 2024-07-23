@@ -16,9 +16,13 @@ Visto que existem restrições de hardware, é necessário a aplicação de um b
 <i>Artigo sobre escalonamento de banco de dados:</i> https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/scaling-out-vs-scaling-up
 
 ## Como testar a perfomance?
+Baixei o repositório da rinha back-end que está no link abaixo "INSTRUÇÕES DO PROJETO" e rodei os testes gatling configurados em scala. Assim, torna-se possível melhorar a perfomance técnica até atingir a meta objetivada. Pelo menos 50k de pessoas.
+https://docs.gatling.io/
 
-Estarei usualmente testando a perfomance do banco de dados utilizando o <b>pgbench</b>, uma CLI do postgress que retorna o status do banco. Portanto, conseguirei visualizar as necessidades e o atual estado do banco de dados até atingir o resultado desejado.
+Além disso, estarei usualmente testando a perfomance do banco de dados utilizando o <b>pgbench</b>, uma CLI do postgress que retorna o status do banco. 
 https://www.postgresql.org/docs/10/pgbench.html
+
+Portanto, conseguirei visualizar as necessidades e o atual estado do banco de dados até atingir o resultado desejado.
 
 ## Artigo stackoverflow sobre perfomance de banco de dados
 Para entender quais métodos podem ser aplicados para que alcançe uma boa perfomance no banco de dados.
