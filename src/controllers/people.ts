@@ -13,7 +13,7 @@ export class PeopleController {
             const person = req.body as Omit<Person, 'id'>;
             const response = await this.peopleService.createPerson(person);
 
-            return res.status(201).send(response);
+            return res.setHeader('Location', `/pessoas/${response.id}`).status(201).send(response);
         } catch (e: unknown) {
             if (e instanceof BadRequest) return res.status(400).send({ message: e });
             else if (e instanceof UnprocessableEntity) return res.status(422).send({ message: e });
