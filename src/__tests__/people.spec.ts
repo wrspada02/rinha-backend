@@ -271,6 +271,23 @@ describe('Person tests', () => {
                 await peopleController.handleCreatePerson(request, response);
                 expect(response.statusCode).toBe(201);
             });
+
+            it('should return status 201 with location header', async () => {
+                request = httpMocks.createRequest({
+                    method: 'POST',
+                    url: '/pessoas',
+                    body: {
+                        apelido: 'Test1', 
+                        nascimento: '1200-12-12', 
+                        nome: 'Test1', 
+                        stack: []
+                    },
+                });
+
+                await peopleController.handleCreatePerson(request, response);
+                expect(response.statusCode).toBe(201);
+                expect(response.getHeader("Location")).toBeDefined();
+            });
         });
 
         describe('GET - By id', () => {
