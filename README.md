@@ -48,11 +48,11 @@ Estatística perfomance banco de dados rodando com restrições de hardware cont
 Até este breve momento, não utilizei nenhuma técnica para escalar o banco de dados, não refatorei, não modifiquei o docker-compose para aumentar/diminuir hardware dos serviços, nem mexi em alguma propriedade do nginx.
 
 ## Comum test
-![image](https://github.com/user-attachments/assets/0ae85f99-f3e9-4506-8f46-01654469bcc0)
+![image](https://github.com/user-attachments/assets/c2eb955e-e056-4aa7-a990-28f52a10e806)
+
+![image](https://github.com/user-attachments/assets/a3bb92c0-d65c-427a-ad36-9222369655df)
 
 ## Stress test
-![image](https://github.com/user-attachments/assets/68b1d442-53d9-4366-9bf9-5b7d53b25eb6)
+![image](https://github.com/user-attachments/assets/bad7719b-1407-4e27-8a1f-0d2a793f3eef)
 
-![image](https://github.com/user-attachments/assets/5f6eb200-ed7c-406e-87ee-c883fe91a91c)
-
-
+![image](https://github.com/user-attachments/assets/1b69cfbc-84ee-4cdf-b2ee-a3be5e11a457)
