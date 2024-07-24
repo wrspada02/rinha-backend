@@ -56,3 +56,8 @@ Até este breve momento, não utilizei nenhuma técnica para escalar o banco de 
 ![image](https://github.com/user-attachments/assets/bad7719b-1407-4e27-8a1f-0d2a793f3eef)
 
 ![image](https://github.com/user-attachments/assets/1b69cfbc-84ee-4cdf-b2ee-a3be5e11a457)
+
+## Contagem pessoas
+
+![image](https://github.com/user-attachments/assets/ab64aff8-9958-4132-b537-a7a0acae8a92)
+
