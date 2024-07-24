@@ -4,23 +4,31 @@ import { PrismaClient } from '@prisma/client';
 export class PeopleRepository {
     constructor(private readonly prisma: PrismaClient) {}
 
-    async createPerson(person: Omit<Person, 'id'>): Promise<Person> {
-        return await this.prisma.person.create({ data: { ...person } });
+    createPerson(person: Omit<Person, 'id'>) {
+        return this.prisma.person.create({ data: { ...person } });
     }
 
-    async getPeopleById(id: string): Promise<Person | null> {
-        return await this.prisma.person.findFirst({ where: { id }});
+    getPeopleById(id: string) {
+        return this.prisma.person.findUnique({ where: { id } });
     }
 
-    async getPeopleByTerm(term: string): Promise<Person[]> {
-        return await this.prisma.person.findMany({ where: { OR: [{ apelido: term }, { nome: term }, { stack: { has: term } }]}});
+    getPeopleByTerm(term: string) {
+        return this.prisma.person.findMany({
+            where: {
+                OR: [
+                    { apelido: { contains: term, mode: 'insensitive' } },
+                    { nome: { contains: term, mode: 'insensitive' } },
+                    { stack: { has: term } }
+                ]
+            }
+        });
     }
 
-    async getPeopleCount(): Promise<number> {
-        return await this.prisma.person.count();
+    getPeopleCount() {
+        return this.prisma.person.count();
     }
 
-    async getHealthCheck() {
-        return await this.prisma.$queryRaw`SELECT 1`;
+    getHealthCheck() {
+        return this.prisma.$queryRaw`SELECT 1`;
     }
 }

@@ -22,4 +22,6 @@ model Person {
   nome       String
   nascimento String
   stack      String[]
+
+  @@index([apelido, nome, stack])
 }
