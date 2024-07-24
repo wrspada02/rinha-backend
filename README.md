@@ -53,5 +53,6 @@ Até este breve momento, não utilizei nenhuma técnica para escalar o banco de 
 ## Stress test
 ![image](https://github.com/user-attachments/assets/68b1d442-53d9-4366-9bf9-5b7d53b25eb6)
 
+![image](https://github.com/user-attachments/assets/5f6eb200-ed7c-406e-87ee-c883fe91a91c)
 
 
